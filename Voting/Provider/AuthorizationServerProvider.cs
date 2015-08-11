@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin.Security.OAuth;
 using System;
+using System.ComponentModel;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Voting.Common;
@@ -50,7 +51,7 @@ namespace Voting.Provider
             if (user.Confirmed)
             {
                 id.AddClaim(new Claim(ClaimTypes.Email, user.Email));
-                id.AddClaim(new Claim(ClaimTypes.Role, user.Role.ToString()));
+                id.AddClaim(new Claim(ClaimTypes.Role, ((int)user.Role).ToString()));
             }
 
             if (user.MobileNumber != null)
